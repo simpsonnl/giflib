@@ -1,6 +1,22 @@
+buildscript{
+    repositories{
+        mavenCentral()
+    }
+    dependencies{
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.2.0.RELEASE', ext: 'pom'
+
+    }
+}
+
+
+
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+
 }
+
+
 
 group 'com.nicksimpson'
 version '1.0-SNAPSHOT'
@@ -12,7 +28,11 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.0.RELEASE'
+
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.0.RELEASE'
+
 
 }
