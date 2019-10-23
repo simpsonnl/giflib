@@ -17,12 +17,14 @@ dependency injection
 @Component
 public class GifRepository {
     private static final List<Gif> ALL_GIFS = Arrays.asList(
-        new Gif("android-explosion", 1, LocalDate.of(2015,2,13), "Chris Ramacciotti", false),
+        new Gif("android-explosion", 3, LocalDate.of(2015,2,13), "Chris Ramacciotti", false),
         new Gif("ben-and-mike", 2, LocalDate.of(2015,10,30), "Ben Jakuben", true),
-        new Gif("book-dominos", 3, LocalDate.of(2015,9,15), "Craig Dennis", false),
-        new Gif("compiler-bot", 2, LocalDate.of(2015,2,13), "Ada Lovelace", true),
-        new Gif("cowboy-coder", 3, LocalDate.of(2015,2,13), "Grace Hopper", false),
-        new Gif("infinite-andrew", 1, LocalDate.of(2015,8,23), "Marissa Mayer", true)
+        new Gif("book-dominos", 1, LocalDate.of(2015,9,15), "Craig Dennis", false),
+        new Gif("compiler-bot", 1, LocalDate.of(2015,2,13), "Ada Lovelace", true),
+        new Gif("cowboy-coder", 2, LocalDate.of(2015,2,13), "Grace Hopper", false),
+        new Gif("infinite-andrew", 2, LocalDate.of(2015,8,23), "Marissa Mayer", true),
+        new Gif("frozone", 2, LocalDate.of(2019, 10, 22), "simpsonnl", true),
+        new Gif("battery", 1, LocalDate.of(2019, 10, 22), "simpsonnl", false)
     );
 
     public Gif findByName(String name){
@@ -57,5 +59,15 @@ public class GifRepository {
             }
         }
         return favorites;
+    }
+
+    public List<Gif> getSearchResults(String query){
+        List<Gif> results = new ArrayList<>();
+        for(Gif gif: ALL_GIFS){
+            if(gif.getName().toLowerCase().contains(query)){
+                results.add(gif);
+            }
+        }
+        return results;
     }
 }
